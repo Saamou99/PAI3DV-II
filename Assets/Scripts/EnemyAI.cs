@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     public Transform player; // Reference to the player's transform
-    private NavMeshAgent agent;
+    private NavMeshAgent agent; // NavMeshAgent component for movement
 
     void Start()
     {
