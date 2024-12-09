@@ -7,13 +7,32 @@ public class ShootingScript : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform leftFirePoint;
     public Transform rightFirePoint;
-    public float bulletSpeed = 20f;
+    public float bulletSpeed = 30f;
+    public float maxBulletTravelDistance = 100f;
+    public int maxShots = 5;
+    public float resetTime = 5f;
+
+    private int currentShots = 0;
+    private float resetTimer = 0f;
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        // Handle shooting input
+        if (Input.GetButtonDown("Fire1") && currentShots < maxShots)
         {
             ShootFromBothHands();
+            currentShots++;
+        }
+
+        // Reset the shot counter after the cooldown period
+        if (currentShots >= maxShots)
+        {
+            resetTimer += Time.deltaTime;
+            if (resetTimer >= resetTime)
+            {
+                currentShots = 0;
+                resetTimer = 0f;
+            }
         }
     }
 
@@ -27,11 +46,28 @@ public class ShootingScript : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
+
         if (rb != null)
         {
             rb.velocity = firePoint.forward * bulletSpeed;
         }
 
-        Destroy(bullet, 5f);
+        // Start coroutine to track bullet travel distance
+        StartCoroutine(DestroyBulletAfterTravel(bullet, firePoint.position));
+    }
+
+    private IEnumerator DestroyBulletAfterTravel(GameObject bullet, Vector3 startPosition)
+    {
+        while (bullet != null)
+        {
+            // Check if the bullet has traveled the maximum distance
+            if (Vector3.Distance(startPosition, bullet.transform.position) >= maxBulletTravelDistance)
+            {
+                Destroy(bullet);
+                yield break;
+            }
+
+            yield return null;
+        }
     }
 }
