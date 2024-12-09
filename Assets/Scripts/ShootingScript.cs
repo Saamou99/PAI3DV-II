@@ -8,8 +8,8 @@ public class ShootingScript : MonoBehaviour
     public Transform leftFirePoint;
     public Transform rightFirePoint;
     public float bulletSpeed = 30f;
-    public float maxBulletTravelDistance = 100f;
-    public int maxShots = 5;
+    public float maxBulletTravelDistance = 20f;
+    public int maxShots = 10;
     public float resetTime = 5f;
 
     private int currentShots = 0;

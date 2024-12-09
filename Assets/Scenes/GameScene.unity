@@ -32876,7 +32876,7 @@ MonoBehaviour:
   rightFirePoint: {fileID: 1950512676}
   bulletSpeed: 30
   maxBulletTravelDistance: 30
-  maxShots: 10
+  maxShots: 50
   resetTime: 5
 --- !u!1001 &6718519320050970057
 PrefabInstance:
