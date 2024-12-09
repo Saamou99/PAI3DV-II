@@ -7,6 +7,9 @@ Student Number: 501
 Link to Project:
 https://github.com/Saamou99/PAI3DV-II.git
 
+Youtube link:
+https://youtu.be/g-xd4Hwxgq0
+
 Overview of the Game:
 The idea of the project is a fun game where the Player must escape the Zombies before getting caught. The player runs through a maze-like map with guns able to shoot the zombies in a 3D environment using keyboard controls WASD for movement, C for camera changes and Mouse Click 1 for Shooting bullets. The goal of the game is to complete the maze-like map and run to the Ninja who is waiting for you before the zombies get to you.
 The main parts of the game are:
